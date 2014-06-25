@@ -48,6 +48,9 @@ angular.module('myApp.controllers', [])
              requestWeeklyPostFreqChart();
              requestWordCloud();
 			 requestTop();
+             $.blockUI();
+             setTimeout($.unblockUI, 5000);
+             setTimeout(function(){document.getElementById('group').style.visibility = 'visible'}, 5000);
            });
 		
 		$http({method: 'GET', url: '/rest/group', params: {groupid : $routeParams.groupid}}).
