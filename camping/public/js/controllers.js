@@ -48,7 +48,19 @@ angular.module('myApp.controllers', [])
              requestWeeklyPostFreqChart();
              requestWordCloud();
 			 requestTop();
-             $.blockUI();
+             $.blockUI({ message: '<img src="images/loading.gif"/>',
+                         css: {
+                            width: '100px',
+                            height: '100px',
+
+                            position: 'absolute',
+
+                            margin: 'auto',
+                            border: 'none',
+                            backgroundColor: '#fff' 
+                         },
+                         overlayCSS: { backgroundColor: '#fff', opacity: 0.6, border: '1px solid #000000' }
+             });
              setTimeout($.unblockUI, 5000);
              setTimeout(function(){document.getElementById('group').style.visibility = 'visible'}, 5000);
            });
