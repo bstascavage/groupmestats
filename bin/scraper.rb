@@ -31,9 +31,11 @@ class Scraper
 	return_result = []
 	groups = $gm.get("groups", @token)['response']
 	groups.each do | group |
-	    image = group['image_url'] + '.avatar'
-	    hash = { 'name' => group['name'], 'group_id' => group['group_id'], 'image' => image }
-	    return_result.push(hash)
+	    if !group['image_url'].nil?
+	        image = group['image_url'] + '.avatar'
+	        hash = { 'name' => group['name'], 'group_id' => group['group_id'], 'image' => image }
+	        return_result.push(hash)
+	    end
 	end
 	return return_result
     end
